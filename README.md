@@ -1,0 +1,1 @@
+Simple game library written in VanillaJS
