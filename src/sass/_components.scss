@@ -1,0 +1,87 @@
+// Header
+.top-header {
+    width: 100%;
+    background-color: var(--color-dark-secondary);
+    padding: 2rem;
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .top-title {
+            color: var(--color-primary);
+        }
+    }
+}
+
+// Form
+.search-game {
+    &__input {
+        outline: none;
+        border: none;
+        background: white;
+        border-radius: 10px;
+        padding: 1rem;
+        width: 25rem;   
+    }
+}
+
+// Buttons
+.btn {
+    outline: none;
+    cursor: pointer;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-dark);
+    font-weight: 700;
+}
+
+// Container
+.container {
+    width: 80%;
+    margin: 0px auto;
+}
+
+// Games
+.games-results {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.game {
+    width: 20%;
+    margin: 1.5rem 0 1.5rem 1rem;
+
+
+    &__details {
+        .game-cover {
+            height: 400px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: .5rem;
+
+            &__name {
+                color: var(--color-primary);
+                font-weight: 700;
+                font-size: 1.4rem;
+            }
+        }
+    }
+}
