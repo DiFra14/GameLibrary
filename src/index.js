@@ -14,8 +14,8 @@ const searchController = async () => {
     const query = elements.searchGameInput.value;
     state.search = new Search(query);
     try {
-        // TODO: Clean input
-        searchView.cleanGameResults();
+        searchView.clearGameResults();
+        searchView.clearSearchInput();
         showLoader(elements.gameResults);
         await state.search.findGameByQuery();
 

@@ -11,7 +11,12 @@ export const elements = {
 
 export const showLoader = (container) => {
     const markup = `
-        <div class="lds-ripple"><div></div><div></div></div>;
+        <div class="lds-ripple">
+            <div>
+            </div>
+            <div>
+            </div>
+        </div>;
     `
     container.insertAdjacentHTML('beforebegin', markup);
 };

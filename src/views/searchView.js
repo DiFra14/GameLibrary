@@ -3,8 +3,12 @@
  */
 import { elements } from './base';
 
-export const cleanGameResults = () => {
+export const clearGameResults = () => {
     elements.gameResults.innerHTML = '';
+};
+
+export const clearSearchInput = () => {
+    elements.searchGameInput.value = '';
 };
 
 const showPlatforms = (platforms) => {

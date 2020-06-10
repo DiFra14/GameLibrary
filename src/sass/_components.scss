@@ -11,6 +11,11 @@
 
         .top-title {
             color: var(--color-primary);
+            transition: all .2s;
+
+            &:hover {
+                transform: skewY(-2deg);
+            }
         }
     }
 }
@@ -41,6 +46,12 @@
     background: var(--color-primary);
     color: var(--color-dark);
     font-weight: 700;
+    transition: all .2s;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0.5rem 1rem 1rem rgba(0, 0, 0, 0.4);
+    }
 }
 
 // Container
@@ -60,10 +71,16 @@
 
 .game {
     width: 20%;
-    margin: 1.5rem 0 1.5rem 1rem;
+    margin: 1.5rem 0 2.5rem 1rem;
+    transition: all .2s;
 
+    &:hover {
+        transform: scale(1.1);
+    }
 
     &__details {
+        height: 430px;
+        
         .game-cover {
             height: 400px;
             width: 100%;
@@ -73,9 +90,10 @@
 
         .game-info {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
             margin-top: .5rem;
+            z-index: 1;
 
             &__name {
                 color: var(--color-primary);
