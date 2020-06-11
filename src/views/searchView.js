@@ -1,10 +1,10 @@
 /**
- * View del componente Search! Gestisce tutto quello che riguarda il form di ricerca principale
+ * Search view
  */
-import { elements } from './base';
+import { elements, renderPlatform } from './base';
 
-export const clearGameResults = () => {
-    elements.gameResults.innerHTML = '';
+export const clearContainer = () => {
+    elements.container.innerHTML = '';
 };
 
 export const clearSearchInput = () => {
@@ -12,16 +12,20 @@ export const clearSearchInput = () => {
 };
 
 const showPlatforms = (platforms) => {
-    let markup = '';
+    let newPlatforms = [];
+
     platforms.forEach(platform => {
-        markup += `<span>${platform.platform.name}</span>`;
+        if (!newPlatforms.includes(platform.platform.name.split(' ')[0])) {
+            newPlatforms.push(platform.platform.name.split(' ')[0]);
+        }
     });
-    return markup;
+    return `<span>${renderPlatform(newPlatforms)}</span>`;
 }
  
 const renderGame = (game) => {
+    const gamesContainer = document.querySelector('.games-results');
     const markup = `
-        <div class="game">
+        <div class="game" id="${game.id}">
             <div class="game__details">
                 <img class="game-cover" src="${game.background_image}" alt="#">
                 <div class="game-info">
@@ -31,10 +35,14 @@ const renderGame = (game) => {
             </div>  
         </div>
     `;
-
-    elements.gameResults.insertAdjacentHTML('beforeend', markup);
+    gamesContainer.insertAdjacentHTML('beforeend', markup);
 };
 
 export const renderGamesSearch = (games) => {
-    games.results.forEach(renderGame);
+    const markup = `
+        <div class="games-results">
+        </div>
+    `;
+    elements.container.insertAdjacentHTML('afterbegin', markup);
+    games.results.forEach(game => renderGame(game));
 };

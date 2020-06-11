@@ -13,6 +13,7 @@ export default class Search {
             const res = await axios.get(`${process.env.API_PROXY}/${process.env.API_ENDPOINT}=${this.query}`);
             this.results = res.data;
         } catch(error) {
+            // TODO: gestione errori
             console.log(error);
         }
     }
