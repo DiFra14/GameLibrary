@@ -1,3 +1,3 @@
 ## Game Library
 
-A simple games library using RAWG.io API created using only Vanilla JS.
+A simple games library with RAWG.io API created using only Vanilla JS.
