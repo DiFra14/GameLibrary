@@ -3,10 +3,6 @@
  */
 import { elements, renderPlatform } from './base';
 
-export const clearContainer = () => {
-    elements.container.innerHTML = '';
-};
-
 export const clearSearchInput = () => {
     elements.searchGameInput.value = '';
 };
@@ -19,11 +15,13 @@ const showPlatforms = (platforms) => {
             newPlatforms.push(platform.platform.name.split(' ')[0]);
         }
     });
-    return `<span>${renderPlatform(newPlatforms)}</span>`;
+    console.log('platforms', newPlatforms);
+    return `<span class="platform-icons">${renderPlatform(newPlatforms)}</span>`;
 }
  
 const renderGame = (game) => {
-    const gamesContainer = document.querySelector('.games-results');
+    const gamesResults = document.querySelector('.games-content')
+
     const markup = `
         <div class="game" id="${game.id}">
             <div class="game__details">
@@ -35,12 +33,17 @@ const renderGame = (game) => {
             </div>  
         </div>
     `;
-    gamesContainer.insertAdjacentHTML('beforeend', markup);
+    gamesResults.insertAdjacentHTML('beforeend', markup);
 };
 
-export const renderGamesSearch = (games) => {
+export const renderGamesSearch = (games, query) => {
     const markup = `
         <div class="games-results">
+            <div>
+                <h2 class="section-title">${query ? `Search for: ${query}` : 'Popular Games'}</h2>
+            </div>
+            <div class="games-content">
+            </div>
         </div>
     `;
     elements.container.insertAdjacentHTML('afterbegin', markup);

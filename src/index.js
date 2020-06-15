@@ -4,35 +4,55 @@
 import './sass/main.scss';
 import Search from './models/Search';
 import Game from './models/Game';
+import Error from './models/Error';
 import * as searchView from  './views/searchView';
 import * as gameView from  './views/gameView';
+import * as errorView from './views/errorView';
 import { elements, showLoader, removeLoader } from './views/base';
  
-// Global app state. (Lo stato dell'applicazione)
+// Global app state
 const state = {}
 
 const goToHome = () => {
     window.location = '/';
 }
 
+const clearContainer = () => {
+    elements.container.innerHTML = '';
+};
+
+const manageErrors = (error) => {
+    removeLoader(elements.container);
+            
+    clearContainer();
+    errorView.renderErrorPage(error);
+};
+
 // Search controller
-const searchController = async () => {
-    const query = elements.searchGameInput.value;
-    state.search = new Search(query);
+const searchController = async (back, search) => {
+    if (!back) {
+        const query = elements.searchGameInput.value;
+        state.search = new Search(query);
 
-    try {
-        searchView.clearContainer();
-        searchView.clearSearchInput();
         showLoader(elements.container);
+        try {
+            clearContainer();
+            searchView.clearSearchInput();
 
-        await state.search.findGameByQuery();
+            await state.search.findGameByQuery();
 
-        removeLoader(elements.container);
+            removeLoader(elements.container);
 
-        searchView.renderGamesSearch(state.search.results);
-    } catch(error) {
-        // TODO: Gestione degli errori!
-        console.log(error);
+            searchView.renderGamesSearch(state.search.results, state.search.query);
+        } catch(err) {
+            state.error = new Error(err);
+            manageErrors(state.error);
+        }
+    } else {
+        clearContainer();
+        searchView.clearSearchInput();
+
+        searchView.renderGamesSearch(search.results, search.query);
     }
 };
 
@@ -41,14 +61,14 @@ const gameController = async (id) => {
     state.game = new Game(id);
 
     try {
-        searchView.clearContainer();
+        clearContainer();
 
         await state.game.findDetailGameById();
         
         gameView.renderGame(state.game.results);
     } catch(error) {
-        // TODO: Gestione degli errori!
-        console.log(error);
+        state.error = new Error(err);
+        manageErrors(state.error);
     }
 };
 
@@ -58,9 +78,23 @@ elements.searchGameForm.addEventListener('submit', e => {
     searchController();
 });
 
+// General selector
 elements.container.addEventListener('click', (e) => {
-    const gameId = e.target.closest('.game').id;
-    gameController(gameId);
+    const game = e.target.closest('.game');
+    const back = e.target.closest('.goback');
+
+    if (back) {
+        searchController('goback', state.search);
+    }
+
+    if (game) {
+        gameController(game.id);
+    }
 });
 
 elements.topTitle.addEventListener('click', goToHome);
+
+// Global object
+window.addEventListener('load', () => {
+    searchController('');
+});

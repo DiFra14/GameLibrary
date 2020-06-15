@@ -31,13 +31,13 @@ export const removeLoader = (container) => {
 };
 
 const Platforms = new Map();
-Platforms.set('PC', '');
-Platforms.set('Xbox', '');
-Platforms.set('iOS', '');
-Platforms.set('macOS', '');
-Platforms.set('PlayStation', '<i class="fa fa-playstation"></i>');
+Platforms.set('PC', '<i class="fab fa-microsoft"></i>');
+Platforms.set('Xbox', '<i class="fab fa-xbox"></i>');
+Platforms.set('iOS', '<i class="fab fa-apple"></i>');
+Platforms.set('macOS', '<i class="fab fa-apple"></i>');
+Platforms.set('PlayStation', '<i class="fab fa-playstation"></i>');
 Platforms.set('Wii', '');
-Platforms.set('Linux', '');
+Platforms.set('Linux', '<i class="fab fa-linux"></i>');
 
 export const renderPlatform = (platforms) => {
     let markup = '';

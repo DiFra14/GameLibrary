@@ -10,11 +10,10 @@ export default class Search {
 
     async findGameByQuery() {
         try {
-            const res = await axios.get(`${process.env.API_PROXY}/${process.env.API_ENDPOINT}=${this.query}`);
+            const res = await axios.get(`${process.env.API_ENDPOINT}=${this.query}`);
             this.results = res.data;
         } catch(error) {
-            // TODO: gestione errori
-            console.log(error);
+            throw(error);
         }
     }
 }

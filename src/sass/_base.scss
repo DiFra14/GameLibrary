@@ -17,10 +17,10 @@ html {
 body {
     background-color: var(--color-dark);
     font-family: 'Roboto Mono', monospace;
+    height: 100vh;
 }
 
 .lds-ripple {
-    display: inline-block;
     position: relative;
     width: 80px;
     height: 80px;

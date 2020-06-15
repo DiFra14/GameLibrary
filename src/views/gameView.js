@@ -1,10 +1,9 @@
 /**
  * Game view
  */
-import { elements } from './base';
+import { elements, renderPlatform } from './base';
 
 export const renderGame = (game) => {
-    console.log('game', game);
     const markup = `
     <div class="game-detail">
         <h1 class="game-detail__title">${game.name}</h1>
@@ -13,7 +12,7 @@ export const renderGame = (game) => {
             <div class="game-detail__content__info">
                 <ul class="game-info-list">
                     <li><span>Genres:</span></li>
-                    <li><span>Platforms:</span></li>
+                    <li><span class="game-info-list__platforms">Platforms: ${renderPlatform(game.platforms)}</span></li>
                     <li><span>Publisher:</span></li>
                     <li><span>Released:</span></li>
                 </ul>
@@ -24,6 +23,7 @@ export const renderGame = (game) => {
             </div>
         </div>
     </div>
+    <button id="back" class="btn btn-primary goback">BACK</button>
     `;
     elements.container.insertAdjacentHTML('beforeend', markup);
 };

@@ -13,8 +13,7 @@ export default class Game {
             const gameDetail = await axios.get(`${process.env.API_ENDPOINT_GAME_DETAIL}/${this.id}`);
             this.results = gameDetail.data;
         } catch(error) {
-            // TODO: gestione errori
-            console.log(error);
+           throw(error);
         }
     }
 
