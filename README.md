@@ -6,5 +6,5 @@ A simple games library with RAWG.io API created using only Vanilla JS.
 
 ---
 
-[ ] - Mobile
-[ ] - Pagination
+- [ ] Mobile
+- [ ] Pagination
