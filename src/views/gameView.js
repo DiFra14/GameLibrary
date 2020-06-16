@@ -5,24 +5,30 @@ import { elements, showPlatforms } from './base';
 
 const renderPublisher = (publishers) => {
     let publishersString = [];
-    if (publishers.length > 1) {
+    if (publishers.length !== 0 && publishers.length > 1) {
         publishers.forEach(pub => {
             publishersString.push(pub.name);
         });
         return publishersString.join(',');
+    } else if (publishers.length !== 0) {
+        return publishers[0].name;
+    } else {
+        return '';
     }
-    return publishers[0].name;
 };
 
 const renderGenres = (genres) => {
     let genresString = [];
-    if (genres.length > 1) {
+    if (genres.length !== 0 && genres.length > 1) {
         genres.forEach(genre => {
             genresString.push(genre.name);
         });
         return genresString.join(',');
+    } else if (genres.length !== 0) {
+        return genres[0].name;
+    } else {
+        return '';
     }
-    return genres[0].name;
 };
 
 export const renderGame = (game) => {

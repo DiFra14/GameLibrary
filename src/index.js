@@ -59,14 +59,14 @@ const searchController = async (back, search) => {
 // Game controller
 const gameController = async (id) => {
     state.game = new Game(id);
-
     try {
         clearContainer();
 
         await state.game.findDetailGameById();
         
         gameView.renderGame(state.game.results);
-    } catch(error) {
+    } catch(err) {
+        console.log(err);
         state.error = new Error(err);
         manageErrors(state.error);
     }
