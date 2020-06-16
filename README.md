@@ -2,7 +2,7 @@
 
 A simple games library with RAWG.io API created using only Vanilla JS.
 
-**Live** (gameslibrary.surge.sh)[https://gameslibrary.surge.sh/]
+**Live** [gameslibrary.surge.sh](https://gameslibrary.surge.sh/)
 
 ---
 
