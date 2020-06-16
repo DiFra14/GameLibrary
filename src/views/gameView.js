@@ -26,7 +26,6 @@ const renderGenres = (genres) => {
 };
 
 export const renderGame = (game) => {
-    console.log('game', game);
     const markup = `
     <div class="game-detail">
         <h1 class="game-detail__title">${game.name}</h1>
