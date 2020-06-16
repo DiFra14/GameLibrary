@@ -30,20 +30,39 @@ export const removeLoader = (container) => {
     }
 };
 
+export const showPlatforms = (platforms) => {
+    const newPlatforms = fixPlatformsName(platforms);
+
+    return `<span class="platform-icons">${renderPlatform(newPlatforms)}</span>`;
+}
+
+const fixPlatformsName = (platforms) => {
+    let newPlatforms = [];
+
+    platforms.forEach(platform => {
+        if (!newPlatforms.includes(platform.platform.name.split(' ')[0])) {
+            newPlatforms.push(platform.platform.name.split(' ')[0]);
+        }
+    });
+
+    return newPlatforms;
+};
+
 const Platforms = new Map();
 Platforms.set('PC', '<i class="fab fa-microsoft"></i>');
 Platforms.set('Xbox', '<i class="fab fa-xbox"></i>');
-Platforms.set('iOS', '<i class="fab fa-apple"></i>');
+Platforms.set('iOS', '<i class="fab fa-app-store-ios"></i>');
 Platforms.set('macOS', '<i class="fab fa-apple"></i>');
 Platforms.set('PlayStation', '<i class="fab fa-playstation"></i>');
-Platforms.set('Wii', '');
 Platforms.set('Linux', '<i class="fab fa-linux"></i>');
+Platforms.set('Android', '<i class="fab fa-android"></i>');
 
-export const renderPlatform = (platforms) => {
+const renderPlatform = (platforms) => {
     let markup = '';
     platforms.forEach(platform => {
-        markup += Platforms.get(platform);
+        if (Platforms.has(platform)) {
+            markup += Platforms.get(platform);
+        }        
     });
-    console.log(markup);
     return markup;
 };

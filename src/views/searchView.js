@@ -1,24 +1,12 @@
 /**
  * Search view
  */
-import { elements, renderPlatform } from './base';
+import { elements, showPlatforms } from './base';
 
 export const clearSearchInput = () => {
     elements.searchGameInput.value = '';
 };
 
-const showPlatforms = (platforms) => {
-    let newPlatforms = [];
-
-    platforms.forEach(platform => {
-        if (!newPlatforms.includes(platform.platform.name.split(' ')[0])) {
-            newPlatforms.push(platform.platform.name.split(' ')[0]);
-        }
-    });
-    console.log('platforms', newPlatforms);
-    return `<span class="platform-icons">${renderPlatform(newPlatforms)}</span>`;
-}
- 
 const renderGame = (game) => {
     const gamesResults = document.querySelector('.games-content')
 

@@ -55,6 +55,10 @@
     }
 }
 
+.goback {
+    margin-top: 2rem;
+}
+
 // Container
 .container {
     width: 80%;
@@ -124,6 +128,8 @@
                 color: var(--color-primary);
                 font-weight: 700;
                 font-size: 1.4rem;
+                flex: 1 0 0;
+                margin-left: 2px;
             }
         }
     }
@@ -152,17 +158,20 @@
                 list-style: none;
                 margin-bottom: 1.5rem;
                 font-size: 1.3rem;
-                color: var(--color-primary);
 
                 & > li:not(:last-child) {
                     margin-bottom: 1rem;
                 }
 
-                &__platforms {
-                    font-size: 1.8rem;
+                & > li {
+                    font-size: 1.3rem;
                     color: var(--color-dark-secondary);
 
-                    & > span > i:not(:last-child) {
+                    & > span:not(.platform-icons) {
+                        color: var(--color-primary);
+                    }
+
+                    & > .platform-icons > i {
                         margin-right: 5px;
                     }
                 }
